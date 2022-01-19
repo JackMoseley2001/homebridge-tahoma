@@ -1,0 +1,1 @@
+{"version":3,"file":"ExteriorHeatingSystem.d.ts","sourceRoot":"","sources":["../../src/mappers/ExteriorHeatingSystem.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAkB,MAAM,gBAAgB,CAAC;AACzD,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAE5C,MAAM,CAAC,OAAO,OAAO,qBAAsB,SAAQ,aAAa;IAC5D,SAAS,CAAC,gBAAgB;IAI1B,SAAS,CAAC,aAAa,CAAC,KAAK,KAAA,GAAG,OAAO,GAAG,KAAK,CAAC,OAAO,CAAC;CAG3D"}

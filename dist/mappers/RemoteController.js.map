@@ -1,0 +1,1 @@
+{"version":3,"file":"RemoteController.js","sourceRoot":"","sources":["../../src/mappers/RemoteController.ts"],"names":[],"mappings":";;;;;AACA,uDAA+B;AAC/B,0CAAwD;AAExD,MAAqB,gBAAiB,SAAQ,gBAAM;IAGtC,gBAAgB;QACtB,MAAM,OAAO,GAAG,IAAI,CAAC,eAAe,CAAC,mBAAQ,CAAC,2BAA2B,CAAC,CAAC;QAC3E,IAAI,CAAC,KAAK,GAAG,OAAO,CAAC,iBAAiB,CAAC,0BAAe,CAAC,uBAAuB,CAAC,CAAC;IACpF,CAAC;CAQJ;AAdD,mCAcC"}

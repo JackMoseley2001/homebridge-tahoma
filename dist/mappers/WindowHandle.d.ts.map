@@ -1,0 +1,1 @@
+{"version":3,"file":"WindowHandle.d.ts","sourceRoot":"","sources":["../../src/mappers/WindowHandle.ts"],"names":[],"mappings":"AACA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAE5C,MAAM,CAAC,OAAO,OAAO,YAAa,SAAQ,aAAa;IACnD,SAAS,CAAC,cAAc,CAAC,IAAI,EAAE,MAAM,EAAE,KAAK,KAAA;CAyB/C"}

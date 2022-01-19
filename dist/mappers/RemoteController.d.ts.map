@@ -1,0 +1,1 @@
+{"version":3,"file":"RemoteController.d.ts","sourceRoot":"","sources":["../../src/mappers/RemoteController.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,YAAY,CAAC;AAC5C,OAAO,MAAM,MAAM,WAAW,CAAC;AAG/B,MAAM,CAAC,OAAO,OAAO,gBAAiB,SAAQ,MAAM;IAChD,SAAS,CAAC,KAAK,EAAE,cAAc,GAAG,SAAS,CAAC;IAE5C,SAAS,CAAC,gBAAgB;CAW7B"}

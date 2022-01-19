@@ -1,0 +1,1 @@
+{"version":3,"file":"AdjustableSlatsRollerShutter.d.ts","sourceRoot":"","sources":["../../src/mappers/AdjustableSlatsRollerShutter.ts"],"names":[],"mappings":"AACA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAE5C,MAAM,CAAC,OAAO,OAAO,4BAA6B,SAAQ,aAAa;IAEnE,SAAS,CAAC,iBAAiB,CAAC,KAAK,KAAA;IAejC,SAAS,CAAC,sBAAsB,CAAC,KAAK,KAAA;IAOtC,SAAS,CAAC,cAAc,CAAC,IAAI,KAAA,EAAE,KAAK,KAAA;CAavC"}

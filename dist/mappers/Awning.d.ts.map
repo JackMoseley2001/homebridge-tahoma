@@ -1,0 +1,1 @@
+{"version":3,"file":"Awning.d.ts","sourceRoot":"","sources":["../../src/mappers/Awning.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,iBAAiB,CAAC;AAG5C,MAAM,CAAC,OAAO,OAAO,MAAO,SAAQ,aAAa;IAC7C;;;;OAIA;IACA,SAAS,CAAC,iBAAiB,CAAC,KAAK,KAAA;IAmBjC,SAAS,CAAC,aAAa,CAAC,KAAK,KAAA;IAI7B,SAAS,CAAC,cAAc,CAAC,IAAI,EAAE,MAAM,EAAE,KAAK,KAAA;CAsB/C"}
