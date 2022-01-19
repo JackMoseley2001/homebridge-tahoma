@@ -1,54 +1,54 @@
 {
-  "name": "homebridge-tahoma",
-  "displayName": "Homebridge TaHoma",
-  "version": "2.2.14",
-  "description": "Sample Platform plugin for TaHoma and Cozytouch services (Somfy,Atlantic,Thermor,Sauter): https://github.com/dubocr/homebridge-tahoma",
-  "author": "Romain DUBOC <dubocr@gmail.com>",
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dubocr/homebridge-tahoma.git"
-  },
-  "bugs": {
-    "url": "https://github.com/dubocr/homebridge-tahoma/issues"
-  },
-  "engines": {
-    "node": ">=10.17.0",
-    "homebridge": ">=1.3.0"
-  },
-  "main": "dist/index.js",
-  "scripts": {
-    "lint": "eslint src/**.ts",
-    "watch": "npm run build && npm link && nodemon",
-    "clean": "rimraf ./dist",
-    "build": "rimraf ./dist && tsc",
-    "prepublishOnly": "npm run lint && npm run build && npm version patch --m 'Release %s'",
-    "postpublish": "npm run clean"
-  },
-  "keywords": [
-    "homebridge-plugin",
-    "tahoma",
-    "cozytouch",
-    "somfy",
-    "connexoon"
-  ],
-  "homepage": "https://github.com/dubocr/homebridge-tahoma#readme",
-  "dependencies": {
-    "moment": "^2.29.1",
-    "overkiz-client": "github:JackMoseley2001/overkiz-client#master"
-  },
-  "devDependencies": {
-    "@types/node": "^14.17.27",
-    "@typescript-eslint/eslint-plugin": "^3.10.1",
-    "@typescript-eslint/parser": "^3.10.1",
-    "eslint": "^7.32.0",
-    "homebridge": "^1.3.5",
-    "nodemon": "^2.0.13",
-    "rimraf": "^3.0.2",
-    "ts-node": "^10.3.0",
-    "typescript": "^4.4.4"
-  },
-  "funding": {
-    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L4X489MG7FUCN"
-  }
+    "name": "homebridge-tahoma",
+    "displayName": "Homebridge TaHoma",
+    "version": "2.2.14",
+    "description": "Sample Platform plugin for TaHoma and Cozytouch services (Somfy,Atlantic,Thermor,Sauter): https://github.com/dubocr/homebridge-tahoma",
+    "author": "Romain DUBOC <dubocr@gmail.com>",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dubocr/homebridge-tahoma.git"
+    },
+    "bugs": {
+        "url": "https://github.com/dubocr/homebridge-tahoma/issues"
+    },
+    "engines": {
+        "node": ">=10.17.0",
+        "homebridge": ">=1.3.0"
+    },
+    "main": "dist/index.js",
+    "scripts": {
+        "lint": "eslint src/**.ts",
+        "watch": "npm run build && npm link && nodemon",
+        "clean": "rimraf ./dist",
+        "build": "rimraf ./dist && tsc",
+        "prepublishOnly": "npm run lint && npm run build && npm version patch --m 'Release %s'",
+        "postpublish": "npm run clean"
+    },
+    "keywords": [
+        "homebridge-plugin",
+        "tahoma",
+        "cozytouch",
+        "somfy",
+        "connexoon"
+    ],
+    "homepage": "https://github.com/dubocr/homebridge-tahoma#readme",
+    "dependencies": {
+        "moment": "^2.29.1",
+        "overkiz-client": "github:JackMoseley2001/overkiz-client#master"
+    },
+    "devDependencies": {
+        "@types/node": "^14.17.27",
+        "@typescript-eslint/eslint-plugin": "^3.10.1",
+        "@typescript-eslint/parser": "^3.10.1",
+        "eslint": "^7.32.0",
+        "homebridge": "^1.3.5",
+        "nodemon": "^2.0.13",
+        "rimraf": "^3.0.2",
+        "ts-node": "^10.3.0",
+        "typescript": "^4.5.4"
+    },
+    "funding": {
+        "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L4X489MG7FUCN"
+    }
 }

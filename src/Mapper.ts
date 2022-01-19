@@ -1,8 +1,15 @@
+import { Action, Command, Device, ExecutionState, State } from 'overkiz-client';
+import {
+    CharacteristicValue,
+    Logger,
+    PlatformAccessory,
+    Service,
+    WithUUID,
+} from 'homebridge';
 import { Characteristics, Services } from './Platform';
-import { CharacteristicValue, Logger, PlatformAccessory, Service, WithUUID } from 'homebridge';
-import { Device, State, Command, Action, ExecutionState } from 'overkiz-client';
-import { Platform } from './Platform';
+
 import { GREY } from './colors';
+import { Platform } from './Platform';
 
 export default class Mapper {
     protected log: Logger;
@@ -23,7 +30,8 @@ export default class Mapper {
     }
 
     public build() {
-        const config = Object.assign({},
+        const config = Object.assign(
+            {},
             this.platform.devicesConfig[this.device.uiClass],
             this.platform.devicesConfig[this.device.widget],
             this.platform.devicesConfig[this.device.label],
@@ -41,16 +49,28 @@ export default class Mapper {
 
         const info = this.accessory.getService(Services.AccessoryInformation);
         if (info) {
-            info.setCharacteristic(Characteristics.Manufacturer, this.device.manufacturer);
+            info.setCharacteristic(
+                Characteristics.Manufacturer,
+                this.device.manufacturer,
+            );
             info.setCharacteristic(Characteristics.Model, this.device.model);
-            info.setCharacteristic(Characteristics.SerialNumber, this.device.address.substring(0, 64));
+            info.setCharacteristic(
+                Characteristics.SerialNumber,
+                this.device.address.substring(0, 64),
+            );
             this.services.push(info);
         }
-        this.stateless = (this.device.states.length === 0);
+        this.stateless = this.device.states.length === 0;
 
         this.registerServices();
         this.accessory.services.forEach((service) => {
-            if (!this.services.find((s) => s.UUID === service.UUID && s.subtype === service.subtype)) {
+            if (
+                !this.services.find(
+                    (s) =>
+                        s.UUID === service.UUID &&
+                        s.subtype === service.subtype,
+                )
+            ) {
                 this.accessory.removeService(service);
             }
         });
@@ -58,12 +78,12 @@ export default class Mapper {
         if (!this.stateless) {
             // Init and register states changes
             this.onStatesChanged(this.device.states, true);
-            this.device.on('states', states => this.onStatesChanged(states));
+            this.device.on('states', (states) => this.onStatesChanged(states));
 
             // Init and register sensors states changes
             this.device.sensors.forEach((sensor) => {
                 this.onStatesChanged(sensor.states, true);
-                sensor.on('states', states => this.onStatesChanged(states));
+                sensor.on('states', (states) => this.onStatesChanged(states));
             });
         }
 
@@ -80,13 +100,20 @@ export default class Mapper {
         //
     }
 
-    protected registerService(type: WithUUID<typeof Service>, subtype?: string): Service {
+    protected registerService(
+        type: WithUUID<typeof Service>,
+        subtype?: string,
+    ): Service {
         let service: Service;
         const name = subtype ? this.translate(subtype) : this.device.label;
         if (subtype) {
-            service = this.accessory.getServiceById(type, subtype) || this.accessory.addService(type, name, subtype);
+            service =
+                this.accessory.getServiceById(type, subtype) ||
+                this.accessory.addService(type, name, subtype);
         } else {
-            service = this.accessory.getService(type) || this.accessory.addService(type);
+            service =
+                this.accessory.getService(type) ||
+                this.accessory.addService(type);
         }
         service.setCharacteristic(Characteristics.Name, name);
         /*
@@ -103,9 +130,12 @@ export default class Mapper {
 
     private translate(value: string) {
         switch (value) {
-            case 'boost': return 'Boost';
-            case 'drying': return 'Séchage';
-            default: return value.charAt(0).toUpperCase() + value.slice(1);
+            case 'boost':
+                return 'Boost';
+            case 'drying':
+                return 'Séchage';
+            default:
+                return value.charAt(0).toUpperCase() + value.slice(1);
         }
     }
 
@@ -128,8 +158,14 @@ export default class Mapper {
         this.postponeTimer = setTimeout(task.bind(this), 500, ...args);
     }
 
-    protected async executeCommands(commands: Command | Array<Command> | undefined, standalone = false): Promise<Action> {
-        if (commands === undefined || (Array.isArray(commands) && commands.length === 0)) {
+    protected async executeCommands(
+        commands: Command | Array<Command> | undefined,
+        standalone = false,
+    ): Promise<Action> {
+        if (
+            commands === undefined ||
+            (Array.isArray(commands) && commands.length === 0)
+        ) {
             this.error('No target command for', this.device.label);
             throw new Error('No target command for ' + this.device.label);
         } else if (Array.isArray(commands)) {
@@ -143,7 +179,10 @@ export default class Mapper {
 
         const commandName = commands[0].name;
         const localizedName = this.platform.translate(
-            commands[0].name + (commands[0].parameters.length > 0 ? '.' + commands[0].parameters[0] : ''),
+            commands[0].name +
+                (commands[0].parameters.length > 0
+                    ? '.' + commands[0].parameters[0]
+                    : ''),
         );
         /*
         if (!this.isIdle) {
@@ -151,7 +190,9 @@ export default class Mapper {
         }
         */
 
-        const highPriority = this.device.hasState('io:PriorityLockLevelState') ? true : false;
+        const highPriority = this.device.hasState('io:PriorityLockLevelState')
+            ? true
+            : false;
         const label = this.device.label + ' - ' + localizedName;
 
         if (this.actionPromise) {
@@ -160,7 +201,12 @@ export default class Mapper {
             this.actionPromise = new Promise((resolve, reject) => {
                 setTimeout(async () => {
                     try {
-                        this.executionId = await this.platform.executeAction(label, this.actionPromise.action, highPriority, standalone);
+                        this.executionId = await this.platform.executeAction(
+                            label,
+                            this.actionPromise.action,
+                            highPriority,
+                            standalone,
+                        );
                         resolve(this.actionPromise.action);
                     } catch (error: any) {
                         this.error(commandName + ' ' + error.message);
@@ -168,9 +214,11 @@ export default class Mapper {
                     }
                     this.actionPromise = null;
                 }, 100);
-
             });
-            this.actionPromise.action = new Action(this.device.deviceURL, commands);
+            this.actionPromise.action = new Action(
+                this.device.deviceURL,
+                commands,
+            );
             this.actionPromise.action.on('update', (state, event) => {
                 if (state === ExecutionState.FAILED) {
                     this.error(commandName, event.failureType);
@@ -185,14 +233,16 @@ export default class Mapper {
     }
 
     private async delay(duration) {
-        return new Promise(resolve => setTimeout(resolve, duration));
+        return new Promise((resolve) => setTimeout(resolve, duration));
     }
 
     protected async requestStatesUpdate(defer?: number) {
         if (defer) {
             setTimeout(this.requestStatesUpdate.bind(this), defer * 1000);
         } else {
-            await this.platform.client.refreshDeviceStates(this.device.deviceURL);
+            await this.platform.client.refreshDeviceStates(
+                this.device.deviceURL,
+            );
         }
     }
 
@@ -225,7 +275,7 @@ export default class Mapper {
      */
 
     protected registerServices() {
-        // 
+        //
     }
 
     protected onStatesChanged(states: Array<State>, init = false) {
